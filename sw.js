@@ -1,5 +1,5 @@
 
-const CACHE_NAME = "first-pwa-v1";
+const CACHE_NAME = "first-pwa-v2";
 const APP_FILES = [
   "./",
   "./index.html",
