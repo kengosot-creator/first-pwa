@@ -1,77 +1,240 @@
-
 <!DOCTYPE html>
 <html lang="ja">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="theme-color" content="#2563eb">
+  <meta name="theme-color" content="#A7C7FF">
   <link rel="manifest" href="manifest.json">
   <title>はじめてのPWA</title>
+
   <style>
-    * { box-sizing: border-box; }
+    * {
+      box-sizing: border-box;
+    }
+
     body {
       margin: 0;
-      padding: 24px 16px;
+      padding: 28px 16px;
       font-family: sans-serif;
-      background: #f1f5f9;
-      color: #1e293b;
+      background: linear-gradient(145deg, #EAF5FF, #FFF0F5, #F0FFF7);
+      color: #40516D;
+      min-height: 100vh;
     }
+
     main {
       max-width: 480px;
       margin: 0 auto;
-      background: white;
-      padding: 24px;
-      border-radius: 16px;
+      padding: 26px 20px;
+      background: rgba(255, 255, 255, 0.92);
+      border: 1px solid #FFFFFF;
+      border-radius: 26px;
+      box-shadow: 0 10px 30px rgba(110, 145, 190, 0.12);
     }
-    h1 { font-size: 24px; }
-    p { color: #64748b; }
-    form { display: flex; gap: 8px; }
-    input {
+
+    header {
+      text-align: center;
+      margin-bottom: 26px;
+    }
+
+    .plant {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 64px;
+      height: 64px;
+      background: #E0F7ED;
+      border-radius: 22px;
+      font-size: 34px;
+      margin-bottom: 8px;
+    }
+
+    h1 {
+      margin: 4px 0 10px;
+      font-size: 25px;
+      color: #547DC2;
+      letter-spacing: 0.03em;
+    }
+
+    p {
+      color: #8494AD;
+      line-height: 1.7;
+    }
+
+    header p {
+      margin: 0;
+      font-size: 14px;
+    }
+
+    form {
+      display: flex;
+      gap: 8px;
+      margin-bottom: 22px;
+    }
+
+    input:not([type="checkbox"]) {
       min-width: 0;
       flex: 1;
-      padding: 12px;
-      border: 1px solid #cbd5e1;
-      border-radius: 8px;
+      width: 100%;
+      padding: 13px;
+      border: 1px solid #DCE7F5;
+      border-radius: 14px;
+      background: #FAFCFF;
+      color: #40516D;
       font-size: 16px;
+      outline: none;
     }
+
+    input:not([type="checkbox"]):focus {
+      border-color: #A7C7FF;
+      box-shadow: 0 0 0 3px rgba(167, 199, 255, 0.2);
+    }
+
+    input::placeholder {
+      color: #AFBBCD;
+    }
+
     button {
-      padding: 12px 16px;
-      border: 0;
-      border-radius: 8px;
-      background: #2563eb;
-      color: white;
-      font-size: 16px;
+      padding: 12px 18px;
+      border: none;
+      border-radius: 14px;
+      background: #A7C7FF;
+      color: #FFFFFF;
+      font-size: 15px;
+      font-weight: bold;
       cursor: pointer;
+      transition: transform 0.15s, opacity 0.15s;
     }
-    ul { padding: 0; list-style: none; }
+
+    button:active {
+      transform: scale(0.97);
+    }
+
+    ul {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      padding: 0;
+      margin: 0;
+      list-style: none;
+    }
+
     li {
       display: flex;
       align-items: center;
       gap: 10px;
-      padding: 12px 0;
-      border-bottom: 1px solid #e2e8f0;
+      padding: 13px 12px;
+      background: #F8FAFF;
+      border: 1px solid #E8EEF8;
+      border-radius: 16px;
       overflow-wrap: anywhere;
+      transition: background 0.2s;
     }
-    li span { flex: 1; }
+
+    li input[type="checkbox"] {
+      flex-shrink: 0;
+      width: 21px;
+      height: 21px;
+      margin: 0;
+      accent-color: #75CFAF;
+      cursor: pointer;
+    }
+
+    li span {
+      flex: 1;
+      min-width: 0;
+      line-height: 1.5;
+      font-size: 15px;
+    }
+
+    li.done {
+      background: #F0FBF6;
+      border-color: #D7F2E5;
+    }
+
     li.done span {
       text-decoration: line-through;
-      color: #94a3b8;
+      color: #9DB8AC;
     }
-    li button { padding: 8px 10px; font-size: 14px; }
+
+    li button {
+      flex-shrink: 0;
+      padding: 8px 10px;
+      background: #FFE8EF;
+      color: #C87891;
+      font-size: 12px;
+      border-radius: 10px;
+    }
+
+    #count {
+      margin: 22px 0 0;
+      padding: 12px;
+      text-align: center;
+      background: #EEF4FF;
+      color: #6585BB;
+      border-radius: 14px;
+      font-size: 14px;
+      font-weight: bold;
+    }
+
+    footer {
+      margin-top: 20px;
+      text-align: center;
+      font-size: 12px;
+      color: #A1B5C9;
+    }
+
+    @media (max-width: 360px) {
+      body {
+        padding: 16px 10px;
+      }
+
+      main {
+        padding: 22px 14px;
+      }
+
+      h1 {
+        font-size: 22px;
+      }
+
+      form {
+        gap: 6px;
+      }
+
+      form button {
+        padding: 10px 12px;
+      }
+
+      li {
+        gap: 7px;
+        padding: 11px 8px;
+      }
+    }
   </style>
 </head>
+
 <body>
   <main>
-    <h1>はじめてのPWA</h1>
-    <p>小さなタスクを登録して、ひとつずつ完了しよう。</p>
+    <header>
+      <div class="plant" aria-hidden="true">🌱</div>
+      <h1>はじめてのPWA</h1>
+      <p>小さな一歩を、ひとつずつ。<br>今日も自分のペースでいこう！</p>
+    </header>
 
     <form id="taskForm">
-      <input id="taskInput" placeholder="例：水を飲む" required>
-      <button type="submit">追加</button>
+      <input
+        id="taskInput"
+        placeholder="例：お水を飲む 💧"
+        aria-label="新しいタスク"
+        required
+      >
+      <button type="submit">＋ 追加</button>
     </form>
 
     <ul id="taskList"></ul>
+
     <p id="count">未完了：0件</p>
+
+    <footer>🌷 できたことを、少しずつ増やそう 🌷</footer>
   </main>
 
   <script>
@@ -125,6 +288,7 @@
       render();
     });
   </script>
+
   <script>
     if ("serviceWorker" in navigator) {
       window.addEventListener("load", () => {
@@ -133,6 +297,6 @@
           .catch(error => console.error("登録失敗:", error));
       });
     }
-  </script>  
+  </script>
 </body>
 </html>
