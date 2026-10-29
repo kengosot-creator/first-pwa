@@ -8,16 +8,16 @@
   "display": "standalone",
   "background_color": "#f1f5f9",
   "theme_color": "#2563eb",
-  "icons": [
-    {
-      "src": "アイコン１.png",
-      "sizes": "192x192",
-      "type": "image/png"
-    },
-    {
-      "src": "アイコン２.png",
-      "sizes": "512x512",
-      "type": "image/png"
-    }
-  ]
+"icons": [
+  {
+    "src": "カワイイ１.png",
+    "sizes": "192x192",
+    "type": "image/png"
+  },
+  {
+    "src": "カワイイ２.png",
+    "sizes": "512x512",
+    "type": "image/png"
+  }
+]
 }
