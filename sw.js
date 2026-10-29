@@ -4,10 +4,9 @@ const APP_FILES = [
   "./",
   "./index.html",
   "./manifest.json",
-  "./アイコン１.png",
-  "./アイコン２.png"
+  "./カワイイ１.png",
+  "./カワイイ２.png"
 ];
-
 self.addEventListener("install", event => {
   event.waitUntil(
     caches.open(CACHE_NAME).then(cache => cache.addAll(APP_FILES))
